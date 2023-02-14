@@ -674,7 +674,7 @@ public void addTopping(String topping) {
 ## Example implementation of the OrderingSystem and Salad classes in Java:
 
 ---
-**The Salad class has three private instance variables representing the salad's name, dressing, and calorie count. It has a constructor to initialize these variables, as well as getter methods to access them. It also overrides the toString() method to provide a string representation of the salad.The OrderingSystem class has a main method that prompts the user to enter information about salads they want to order. It creates Salad objects based on the user's input, adds them to a list of orders, and asks the user if they want to order another salad. Once the user is done ordering, it displays the list of orders to the user.**
+## The Salad class has three private instance variables representing the salad's name, dressing, and calorie count. It has a constructor to initialize these variables, as well as getter methods to access them. It also overrides the toString() method to provide a string representation of the salad.The OrderingSystem class has a main method that prompts the user to enter information about salads they want to order. It creates Salad objects based on the user's input, adds them to a list of orders, and asks the user if they want to order another salad. Once the user is done ordering, it displays the list of orders to the user
 ---
 ```java
 // Salad class
