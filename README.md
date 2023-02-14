@@ -668,3 +668,85 @@ public void addTopping(String topping) {
 }
 
 ```
+
+
+---
+## Example implementation of the OrderingSystem and Salad classes in Java:
+
+---
+**The Salad class has three private instance variables representing the salad's name, dressing, and calorie count. It has a constructor to initialize these variables, as well as getter methods to access them. It also overrides the toString() method to provide a string representation of the salad.The OrderingSystem class has a main method that prompts the user to enter information about salads they want to order. It creates Salad objects based on the user's input, adds them to a list of orders, and asks the user if they want to order another salad. Once the user is done ordering, it displays the list of orders to the user.**
+---
+```java
+// Salad class
+public class Salad {
+    private String name;
+    private String dressing;
+    private int calories;
+
+    public Salad(String name, String dressing, int calories) {
+        this.name = name;
+        this.dressing = dressing;
+        this.calories = calories;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDressing() {
+        return dressing;
+    }
+
+    public int getCalories() {
+        return calories;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (Dressing: " + dressing + ", Calories: " + calories + ")";
+    }
+}
+
+// OrderingSystem class
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class OrderingSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Salad> orders = new ArrayList<>();
+        boolean keepOrdering = true;
+
+        while (keepOrdering) {
+            System.out.println("Please enter the salad name:");
+            String name = scanner.nextLine();
+
+            System.out.println("Please enter the dressing:");
+            String dressing = scanner.nextLine();
+
+            System.out.println("Please enter the calories:");
+            int calories = scanner.nextInt();
+            scanner.nextLine(); // consume the new line character
+
+            Salad salad = new Salad(name, dressing, calories);
+            orders.add(salad);
+
+            System.out.println("Would you like to order another salad? (Y/N)");
+            String answer = scanner.nextLine().toUpperCase();
+            keepOrdering = answer.equals("Y");
+        }
+
+        System.out.println("Your orders are:");
+        for (Salad salad : orders) {
+            System.out.println(salad);
+        }
+    }
+}
+
+
+//JAVA
+
+```
+
+---
