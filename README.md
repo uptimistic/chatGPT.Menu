@@ -677,6 +677,12 @@ public void addTopping(String topping) {
 ## The Salad class has three private instance variables representing the salad's name, dressing, and calorie count. It has a constructor to initialize these variables, as well as getter methods to access them. It also overrides the toString() method to provide a string representation of the salad.The OrderingSystem class has a main method that prompts the user to enter information about salads they want to order. It creates Salad objects based on the user's input, adds them to a list of orders, and asks the user if they want to order another salad. Once the user is done ordering, it displays the list of orders to the user
 ---
 ```java
+//JAVA
+// OrderingSystem class
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 // Salad class
 public class Salad {
     private String name;
@@ -706,11 +712,6 @@ public class Salad {
         return name + " (Dressing: " + dressing + ", Calories: " + calories + ")";
     }
 }
-
-// OrderingSystem class
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class OrderingSystem {
     public static void main(String[] args) {
