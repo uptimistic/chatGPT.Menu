@@ -751,3 +751,159 @@ public class OrderingSystem {
 ```
 
 ---
+
+```java
+/JAVA
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class Salad {
+    private String greensType;
+    private String proteinType;
+    private ArrayList<String> toppings;
+    private boolean isVegan;
+    private String dressing;
+    
+    public Salad(String greensType) {
+        this.greensType = greensType;
+        this.toppings = new ArrayList<String>();
+        this.isVegan = true;
+    }
+    
+    public String getGreensType() {
+        return greensType;
+    }
+    
+    public void setGreensType(String greensType) {
+        this.greensType = greensType;
+    }
+    
+    public String getProteinType() {
+        return proteinType;
+    }
+    
+    public void setProteinType(String proteinType) {
+        this.proteinType = proteinType;
+        if (proteinType.equals("tuna") || proteinType.equals("chicken")) {
+            isVegan = false;
+        }
+    }
+    
+    public ArrayList<String> getToppings() {
+        return toppings;
+    }
+    
+    public void addTopping(String topping) {
+        toppings.add(topping);
+        if (topping.equals("cheese") || topping.equals("bacon")) {
+            isVegan = false;
+        }
+    }
+    
+    public boolean isVegan() {
+        return isVegan;
+    }
+    
+    public String getDressing() {
+        return dressing;
+    }
+    
+    public void setDressing(String dressing) {
+        this.dressing = dressing;
+    }
+}
+
+public class OrderingSystem {
+    public static void main(String[] args) {
+        String greeting = "Welcome to Salads to Go!";
+        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
+        Boolean isVegan = null;
+        
+        ArrayList<String> greens = new ArrayList<>();
+        greens.add("kale");
+        greens.add("romaine lettuce");
+        greens.add("iceberg lettuce");
+        
+        ArrayList<String> proteins = new ArrayList<>();
+        proteins.add("tuna");
+        proteins.add("chicken");
+        proteins.add("black beans");
+        
+        ArrayList<String> toppings = new ArrayList<>();
+        toppings.add("cheese");
+        toppings.add("croutons");
+        toppings.add("tomatoes");
+        toppings.add("onions");
+        toppings.add("bacon");
+        toppings.add("olives");
+        
+        System.out.println(greeting);
+        System.out.println(slogan);
+        
+        displayOptions("Salad greens", greens);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("What type of salad greens do you want? ");
+        String greensChoice = scanner.nextLine();
+        Salad salad = new Salad(greensChoice
+
+
+public class Salad {
+    private String greensType;
+    private String proteinType;
+    private ArrayList<String> toppings;
+    private String dressing;
+    private boolean isVegan;
+    
+    public Salad(String greensType) {
+        this.greensType = greensType;
+        this.toppings = new ArrayList<String>();
+    }
+    
+    public String getGreensType() {
+        return greensType;
+    }
+    
+    public void setGreensType(String greensType) {
+        this.greensType = greensType;
+    }
+    
+    public String getProteinType() {
+        return proteinType;
+    }
+    
+    public void setProteinType(String proteinType) {
+        this.proteinType = proteinType;
+        if (proteinType.equals("tuna") || proteinType.equals("chicken")) {
+            isVegan = false;
+        } else {
+            isVegan = true;
+        }
+    }
+    
+    public ArrayList<String> getToppings() {
+        return toppings;
+    }
+    
+    public void addTopping(String topping) {
+        toppings.add(topping);
+        if (topping.equals("cheese") || topping.equals("bacon")) {
+            isVegan = false;
+        }
+    }
+    
+    public String getDressing() {
+        return dressing;
+    }
+    
+    public void setDressing(String dressing) {
+        this.dressing = dressing;
+    }
+    
+    public boolean isVegan() {
+        return isVegan;
+    }
+}
+
+```
+---
