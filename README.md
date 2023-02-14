@@ -105,3 +105,206 @@ public class FastFoodMenu {
 }
 ```
 ---
+## Here's an implementation of the OrderingSystem and Salad classes based on the requirements listed:
+1. Your application will have two classes –an OrderingSystem class with a main method and a Salad class
+that will serve as a blueprint to create a new salad for the customer.
+2. Create your Salad class. Add attributes to hold the type of greens, the type of protein, and the toppings
+the customer specifies. Add an attribute called isVegan to track if the salad is vegan or not. Add a
+constructor and the accessor methods (getters and setters.)
+3. Create an Ordering system class with a main method. Add the code for the remaining requirements to
+the main method.
+4. Declare a variable to hold the STG greeting: “Welcome to Salads to Go!”
+5. Declare a variable to hold the STG slogan: “Build Your Own Salads, Your Way. Time to build a salad.”
+6. Declare a Boolean variable called “isVegan”. (We will use this variable to track whether the user’s salad
+order is vegan or not.)
+7. Declare three ArrayLists to hold the types of greens, types of proteins, and types of toppings. Populate
+the lists with the values below.
+a. Greens types: kale, romaine lettuce, iceberg lettuce
+b. Proteins: tuna, chicken, or black beans
+c. Toppings: cheese, croutons, tomatoes, onions, bacon, and olives
+8. Add a method to the application that displays the greens types, proteins, and toppings to the customer.
+Within the method, use a loop to iterate over the items in the list and display them to the customer.
+9. Display the greeting and the slogan to the customer.
+10. Call the method to display the greens types to the customer.
+11. Then prompt the customer to choose a type of salad greens by asking “What type of salad greens do you
+want?”
+12. Create a new salad object and with the type of greens the customer has chosen.
+13. Call the method to display the proteins to the customer.
+14. Prompt the customer to choose a type of protein by asking “What type of protein do you want?”
+---
+
+```csharp
+//CSHARP
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class OrderingSystem {
+    public static void main(String[] args) {
+        String greeting = "Welcome to Salads to Go!";
+        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
+        Boolean isVegan;
+        ArrayList<String> greens = new ArrayList<>();
+        greens.add("kale");
+        greens.add("romaine lettuce");
+        greens.add("iceberg lettuce");
+        ArrayList<String> proteins = new ArrayList<>();
+        proteins.add("tuna");
+        proteins.add("chicken");
+        proteins.add("black beans");
+        ArrayList<String> toppings = new ArrayList<>();
+        toppings.add("cheese");
+        toppings.add("croutons");
+        toppings.add("tomatoes");
+        toppings.add("onions");
+        toppings.add("bacon");
+        toppings.add("olives");
+        
+        // Display greeting and slogan
+        System.out.println(greeting);
+        System.out.println(slogan);
+        
+        // Display greens types
+        System.out.println("Greens:");
+        for (String green : greens) {
+            System.out.println("- " + green);
+        }
+        
+        // Prompt customer for type of greens
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("What type of salad greens do you want? ");
+        String greensChoice = scanner.nextLine();
+        
+        // Create new salad object with chosen greens
+        Salad salad = new Salad(greensChoice);
+        
+        // Display protein types
+        System.out.println("Proteins:");
+        for (String protein : proteins) {
+            System.out.println("- " + protein);
+        }
+        
+        // Prompt customer for type of protein
+        System.out.print("What type of protein do you want? ");
+        String proteinChoice = scanner.nextLine();
+        
+        // Set protein choice for salad
+        salad.setProtein(proteinChoice);
+        
+        // Display toppings
+        System.out.println("Toppings:");
+        for (String topping : toppings) {
+            System.out.println("- " + topping);
+        }
+        
+        // Prompt customer for toppings
+        System.out.print("What toppings do you want? ");
+        String toppingsChoice = scanner.nextLine();
+        
+        // Set toppings for salad
+        salad.setToppings(toppingsChoice);
+        
+        // Determine if salad is vegan based on protein choice
+        isVegan = salad.getProtein().equals("black beans");
+        salad.setIsVegan(isVegan);
+        
+        // Display salad order
+        System.out.println("You ordered a salad with " + salad.getGreens() + ", " +
+                           salad.getProtein() + ", and " + salad.getToppings() + ".");
+        if (isVegan) {
+            System.out.println("This salad is vegan.");
+        } else {
+            System.out.println("This salad is not vegan.");
+        }
+    }
+}
+
+public class Salad {
+    private String greens;
+    private String protein;
+    private String toppings;
+    private Boolean isVegan;
+    
+    public Salad(String greens) {
+        this.greens = greens;
+    }
+    
+    public String getGreens() {
+        return greens;
+    }
+    
+    public void setGreens(String greens) {
+        this.greens = greens;
+    }
+    
+    public String getProtein() {
+        return protein;
+    }
+    
+    public void setProtein(String protein) {
+        this.protein = protein;
+    }
+    
+    public String getToppings() {
+        return toppings;
+    }
+    
+    public void setToppings(String toppings) {
+        this.toppings = toppings
+
+```
+---
+// TYPESCRIPT
+
+```typescript
+public class OrderingSystem {
+    public static void main(String[] args) {
+        // Code for the ordering system
+    }
+}
+
+public class Salad {
+    private String greensType;
+    private String proteinType;
+    private ArrayList<String> toppings;
+    private boolean isVegan;
+
+    public Salad(String greensType) {
+        this.greensType = greensType;
+        this.toppings = new ArrayList<String>();
+    }
+
+    public String getGreensType() {
+        return greensType;
+    }
+
+    public void setGreensType(String greensType) {
+        this.greensType = greensType;
+    }
+
+    public String getProteinType() {
+        return proteinType;
+    }
+
+    public void setProteinType(String proteinType) {
+        this.proteinType = proteinType;
+    }
+
+    public ArrayList<String> getToppings() {
+        return toppings;
+    }
+
+    public void setToppings(ArrayList<String> toppings) {
+        this.toppings = toppings;
+    }
+
+    public boolean isVegan() {
+        return isVegan;
+    }
+
+    public void setVegan(boolean isVegan) {
+        this.isVegan = isVegan;
+    }
+}
+
+```
+---
