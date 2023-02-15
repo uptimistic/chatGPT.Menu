@@ -43,6 +43,168 @@ Java - 2/14/2023
 
 ---
 
+---
+## Rough draft 
+
+```java
+
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Salad {
+    private String greensType;
+    private String proteinType;
+    private ArrayList<String> toppings;
+    private boolean isVegan;
+    private String dressing;
+
+    public Salad(String greensType) {
+        this.greensType = greensType;
+        this.toppings = new ArrayList<String>();
+    }
+
+    public String getGreensType() {
+        return greensType;
+    }
+
+    public void setGreensType(String greensType) {
+        this.greensType = greensType;
+    }
+
+    public String getProteinType() {
+        return proteinType;
+    }
+
+    public void setProteinType(String proteinType) {
+        this.proteinType = proteinType;
+        if (proteinType.equals("tuna") || proteinType.equals("chicken")) {
+            this.isVegan = false;
+        } else {
+            this.isVegan = true;
+        }
+    }
+
+    public ArrayList<String> getToppings() {
+        return toppings;
+    }
+
+    public void addTopping(String topping) {
+        this.toppings.add(topping);
+        if (topping.equals("cheese") || topping.equals("bacon")) {
+            this.isVegan = false;
+        }
+    }
+
+    public boolean isVegan() {
+        return isVegan;
+    }
+
+    public String getDressing() {
+        return dressing;
+    }
+
+    public void setDressing(String dressing) {
+        this.dressing = dressing;
+    }
+}
+
+
+
+
+public class OrderingSystem {
+    public static void main(String[] args) {
+        String greeting = "Welcome to Salads to Go!";
+        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
+        Boolean isVegan = true;
+        
+        ArrayList<String> greens = new ArrayList<String>();
+        greens.add("kale");
+        greens.add("romaine lettuce");
+        greens.add("iceberg lettuce");
+        
+        ArrayList<String> proteins = new ArrayList<String>();
+        proteins.add("tuna");
+        proteins.add("chicken");
+        proteins.add("black beans");
+        
+        ArrayList<String> toppings = new ArrayList<String>();
+        toppings.add("cheese");
+        toppings.add("croutons");
+        toppings.add("tomatoes");
+        toppings.add("onions");
+        toppings.add("bacon");
+        toppings.add("olives");
+        
+        displayOptions("Greens", greens);
+        Scanner scanner = new Scanner(System.in);
+        String chosenGreens = promptChoice("What type of salad greens do you want?", scanner, greens);
+        
+        Salad salad = new Salad(chosenGreens);
+        
+        displayOptions("Proteins", proteins);
+        String chosenProtein = promptChoice("What type of protein do you want?", scanner, proteins);
+        salad.setProtein(chosenProtein);
+        
+        if (chosenProtein.equals("tuna") || chosenProtein.equals("chicken")) {
+            isVegan = false;
+        }
+        
+        ArrayList<String> chosenToppings = new ArrayList<String>();
+        
+        while (true) {
+            displayOptions("Toppings", toppings);
+            String chosenTopping = promptChoice("What type of topping do you want? (Type 'done' to finish)", scanner, toppings);
+            if (chosenTopping.equals("done")) {
+                break;
+            }
+            chosenToppings.add(chosenTopping);
+            if (chosenTopping.equals("cheese") || chosenTopping.equals("bacon")) {
+                isVegan = false;
+            }
+        }
+        
+        salad.setToppings(chosenToppings);
+        salad.setIsVegan(isVegan);
+        
+        System.out.println("You ordered a " + chosenProtein + " salad on " + chosenGreens + ".");
+        
+        if (!chosenToppings.isEmpty()) {
+            System.out.println("Your salad is topped with:");
+            for (String topping : chosenToppings) {
+                System.out.println("- " + topping);
+            }
+        }
+        
+        if (isVegan) {
+            System.out.println("Thank you for trying our vegan salad.");
+        } else {
+            System.out.println("Thank you for ordering a salad from Salads to Go.");
+        }
+        
+        System.out.println("What type of dressing do you want?");
+        String chosenDressing = scanner.nextLine();
+        salad.setDressing(chosenDressing);
+        System.out.println("Your salad is dressed with " + chosenDressing + ".");
+        
+        try {
+            FileWriter writer = new FileWriter("SaladOrder.txt");
+            writer.write("Greens: " + chosenGreens + "\n");
+            writer.write("Protein: " + chosenProtein + "\n");
+            if (!chosenToppings.isEmpty()) {
+                writer.write("Toppings:\n");
+                for (String topping : chosenToppings) {
+                    writer.write("- " + topping + "\n");
+                }
+            }
+            writer.write("Dressing: " + chosenDressing + "\n");
+            writer.close();
+
+```
+---
 
 ```java
 //Here's an implementation of the Salad class: 
