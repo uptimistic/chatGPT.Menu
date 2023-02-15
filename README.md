@@ -1927,7 +1927,118 @@ public class Salad {
 }
 
 //-------------------------------------------------
+public class Salad {
+    private String greensType;
+    private String proteinType;
+    private ArrayList<String> toppings;
+    private boolean isVegan;
+    private String dressing;
+
+    public Salad(String greensType) {
+        this.greensType = greensType;
+        toppings = new ArrayList<String>();
+        isVegan = true;
+    }
+
+    public String getGreensType() {
+        return greensType;
+    }
+
+    public String getProteinType() {
+        return proteinType;
+    }
+
+    public void setProteinType(String proteinType) {
+        this.proteinType = proteinType;
+        if (proteinType.equals("tuna") || proteinType.equals("chicken")) {
+            isVegan = false;
+        }
+    }
+
+    public ArrayList<String> getToppings() {
+        return toppings;
+    }
+
+    public void addTopping(String topping) {
+        toppings.add(topping);
+        if (topping.equals("cheese") || topping.equals("bacon")) {
+            isVegan = false;
+        }
+    }
+
+    public boolean isVegan() {
+        return isVegan;
+    }
+
+    public String getDressing() {
+        return dressing;
+    }
+
+    public void setDressing(String dressing) {
+        this.dressing = dressing;
+    }
+}
+
 //-------------------------------------------------
+public class Salad {
+    private String greensType;
+    private String proteinType;
+    private boolean isVegan;
+    private ArrayList<String> toppings;
+    private String dressing;
+
+    public Salad(String greensType) {
+        this.greensType = greensType;
+        this.toppings = new ArrayList<String>();
+    }
+
+    public String getGreensType() {
+        return this.greensType;
+    }
+
+    public void setGreensType(String greensType) {
+        this.greensType = greensType;
+    }
+
+    public String getProteinType() {
+        return this.proteinType;
+    }
+
+    public void setProteinType(String proteinType) {
+        this.proteinType = proteinType;
+        if (proteinType.equals("tuna") || proteinType.equals("chicken")) {
+            this.isVegan = false;
+        } else {
+            this.isVegan = true;
+        }
+    }
+
+    public boolean isVegan() {
+        return this.isVegan;
+    }
+
+    public ArrayList<String> getToppings() {
+        return this.toppings;
+    }
+
+    public void addTopping(String topping) {
+        this.toppings.add(topping);
+        if (topping.equals("cheese") || topping.equals("bacon")) {
+            this.isVegan = false;
+        } else {
+            this.isVegan = true;
+        }
+    }
+
+    public String getDressing() {
+        return this.dressing;
+    }
+
+    public void setDressing(String dressing) {
+        this.dressing = dressing;
+    }
+}
+
 //-------------------------------------------------
 //-------------------------------------------------
 //-------------------------------------------------
@@ -2794,8 +2905,218 @@ public class OrderingSystem {
             // Prompt for topping
 
 //-------------------------------------------------
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class OrderingSystem {
+    public static void main(String[] args) {
+        String greeting = "Welcome to Salads to Go!";
+        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
+        System.out.println(greeting);
+        System.out.println(slogan);
+
+        // Create the greens, protein, and topping ArrayLists
+        ArrayList<String> greens = new ArrayList<>();
+        greens.add("kale");
+        greens.add("romaine lettuce");
+        greens.add("iceberg lettuce");
+
+        ArrayList<String> protein = new ArrayList<>();
+        protein.add("tuna");
+        protein.add("chicken");
+        protein.add("black beans");
+
+        ArrayList<String> toppings = new ArrayList<>();
+        toppings.add("cheese");
+        toppings.add("croutons");
+        toppings.add("tomatoes");
+        toppings.add("onions");
+        toppings.add("bacon");
+        toppings.add("olives");
+
+        // Display the greens types, proteins, and toppings to the customer
+        displayList("Greens types", greens);
+        displayList("Proteins", protein);
+        displayList("Toppings", toppings);
+
+        // Prompt the customer to choose a type of salad greens
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What type of salad greens do you want?");
+        String chosenGreens = scanner.nextLine();
+
+        // Create a new salad object with the chosen greens
+        Salad salad = new Salad(chosenGreens);
+
+        // Prompt the customer to choose a type of protein
+        System.out.println("What type of protein do you want?");
+        String chosenProtein = scanner.nextLine();
+
+        // Set the type of protein that the customer chose on the salad object
+        salad.setProtein(chosenProtein);
+
+        // Determine if the protein is vegan or not
+        boolean isVegan = true;
+        if (chosenProtein.equals("tuna") || chosenProtein.equals("chicken")) {
+            isVegan = false;
+        }
+        salad.setIsVegan(isVegan);
+
+        // Prompt the customer to select toppings
+        System.out.println("What type of topping do you want? Type 'done' to finish.");
+        String chosenTopping = scanner.nextLine();
+        while (!chosenTopping.equals("done")) {
+            // Add the topping to the toppings list
+            toppings.add(chosenTopping);
+
+            // Determine if the topping is vegan or not
+            if (chosenTopping.equals("cheese") || chosenTopping.equals("bacon")) {
+                isVegan = false;
+            }
+            salad.setIsVegan(isVegan);
+
+            // Prompt the customer to select another topping
+            System.out.println("What type of topping do you want? Type 'done' to finish.");
+            chosenTopping = scanner.nextLine();
+        }
+
+        // Add the list of toppings to the salad object
+        salad.setToppings(toppings);
+
+        // Display the salad order to the customer
+        System.out.println("You ordered a " + chosenProtein + " salad on " + chosenGreens + ".");
+        if (!toppings.isEmpty()) {
+            System.out.print("Your salad is topped with: ");
+            for (String topping : toppings) {
+                System.out.print(topping + " ");
+            }
+            System.out.println();
+        }
+
+        if (isVegan) {
+            System.out.println("Thank you for trying our vegan salad.");
+        } else {
+            System.out.println("Thank you for ordering a salad from Salads to Go.");
+        }
+
+        // Prompt the
+
 //-------------------------------------------------
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class OrderingSystem {
+    public static void main(String[] args) {
+        String greeting = "Welcome to Salads to Go!";
+        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
+        boolean isVegan = true;
+
+        ArrayList<String> greensTypes = new ArrayList<String>();
+        greensTypes.add("kale");
+        greensTypes.add("romaine lettuce");
+        greensTypes.add("iceberg lettuce");
+
+        ArrayList<String> proteinTypes = new ArrayList<String>();
+        proteinTypes.add("tuna");
+        proteinTypes.add("chicken");
+        proteinTypes.add("black beans");
+
+        ArrayList<String> toppingTypes = new ArrayList<String>();
+        toppingTypes.add("cheese");
+        toppingTypes.add("croutons");
+        toppingTypes.add("tomatoes");
+        toppingTypes.add("onions");
+        toppingTypes.add("bacon");
+        toppingTypes.add("olives");
+
+        displayItems("Greens types:", greensTypes);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("What type of salad greens do you want? ");
+        String greensChoice = scanner.nextLine();
+
+        Salad salad = new Salad(greensChoice);
+
+        displayItems("Protein types:", proteinTypes);
+        System.out.print("What type of protein do you want? ");
+        String proteinChoice = scanner.nextLine();
+        salad.setProteinType(proteinChoice);
+
+        ArrayList<String> toppings = new ArrayList<String>();
+        boolean keepAddingToppings = true;
+        while (keepAddingToppings) {
+            displayItems("Topping types:", toppingTypes);
+            System.out.print("What type of topping do you want? (type 'done' to finish) ");
+            String toppingChoice = scanner.nextLine();
+            if (toppingChoice.equals("done")) {
+                keepAddingToppings = false;
+            } else {
+                salad.addTopping(toppingChoice);
+            }
+        }
+
+        System.out.println("You ordered a " + salad.getProteinType() + " salad on " + salad.getGreensType() + ".");
+        ArrayList<String> saladToppings = salad.getToppings();
+        if (saladToppings.size() > 0) {
+            System
+
 //-------------------------------------------------
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class OrderingSystem {
+    public static void main(String[] args) {
+        // Declare variables
+        String greeting = "Welcome to Salads to Go!";
+        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
+        boolean isVegan;
+        ArrayList<String> greensTypes = new ArrayList<String>();
+        ArrayList<String> proteinTypes = new ArrayList<String>();
+        ArrayList<String> toppingTypes = new ArrayList<String>();
+        ArrayList<String> toppings = new ArrayList<String>();
+
+        // Populate lists
+        greensTypes.add("kale");
+        greensTypes.add("romaine lettuce");
+        greensTypes.add("iceberg lettuce");
+
+        proteinTypes.add("tuna");
+        proteinTypes.add("chicken");
+        proteinTypes.add("black beans");
+
+        toppingTypes.add("cheese");
+        toppingTypes.add("croutons");
+        toppingTypes.add("tomatoes");
+        toppingTypes.add("onions");
+        toppingTypes.add("bacon");
+        toppingTypes.add("olives");
+
+        // Display greens, proteins, and toppings
+        displayItems("Greens types:", greensTypes);
+        displayItems("Protein types:", proteinTypes);
+        displayItems("Topping types:", toppingTypes);
+
+        // Prompt user to choose greens
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("What type of salad greens do you want? ");
+        String greensType = scanner.nextLine();
+        Salad salad = new Salad(greensType);
+
+        // Prompt user to choose protein
+        System.out.print("What type of protein do you want? ");
+        String proteinType = scanner.nextLine();
+        salad.setProteinType(proteinType);
+
+        // Prompt user to choose toppings
+        while (true) {
+            System.out.print("What type of topping do you want? (Enter \"done\" to finish) ");
+            String topping = scanner.nextLine
+
 //-------------------------------------------------
 //-------------------------------------------------
 //-------------------------------------------------
