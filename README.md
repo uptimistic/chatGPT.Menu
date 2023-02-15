@@ -908,6 +908,41 @@ public class Salad {
 ```
 ---
 Java - 2/14/2023
+---
+* Two java classes –an OrderingSystem class with a main method and a Salad class that will serve as a blueprint to create a new salad for the customer. 
+* Create your Salad class. Add attributes to hold the type of greens, the type of protein, and the toppings the customer specifies. Add an attribute called isVegan to track if the salad is vegan or not. Add a constructor and the accessor methods (getters and setters.) 
+* Create an Ordering system class with a main method. Add the code for the remaining requirements to the main method. 
+* Declare a variable to hold the STG greeting: “Welcome to Salads to Go!” 
+* Declare a variable to hold the STG slogan: “Build Your Own Salads, Your Way. Time to build a salad.” 
+* Declare a Boolean variable called “isVegan”. (We will use this variable to track whether the user’s salad order is vegan or not.) 
+*  Declare three ArrayLists to hold the types of greens, types of proteins, and types of toppings. Populate the lists with the values below. a. Greens types: kale, romaine lettuce, iceberg lettuce b. Proteins: tuna, chicken, or black beans c. Toppings: cheese, croutons, tomatoes, onions, bacon, and olives 
+* Add a method to the application that displays the greens types, proteins, and toppings to the customer. Within the method, use a loop to iterate over the items in the list and display them to the customer. 
+* Display the greeting and the slogan to the customer. 
+* Call the method to display the greens types to the customer. 
+* Then prompt the customer to choose a type of salad greens by asking “What type of salad greens do you want?” 
+*  Create a new salad object and with the type of greens the customer has chosen. 
+* Call the method to display the proteins to the customer. 
+* Prompt the customer to choose a type of protein by asking “What type of protein do you want?” 
+* Set the type of protein that the customer chose on the salad object. 
+* Use a decision statement to determine if the proteinthe customer chose is vegan. Tuna and chicken are not vegan. The black beans are vegan.
+* If the proteinis not vegan, set the isVegan property of the salad to false. If the proteinis vegan, set the isVegan property of the salad to true.
+* Create a new empty ArrayList called “toppings”. This list will hold the toppings for the salad that are chosen by the customer. 
+* Use a loop to keep prompting the customer to select another topping until the customer indicates they do not want any more toppings. 
+    *  Inside the loop body, prompt the customer to choose a topping by asking “What type of topping do you want?” Then call the method to display the topping types to the customer. 
+    * Inside the loop body, add the topping to the toppings list. 
+    * Inside the loop body, use a decision statement to determine if the topping the customer chose is vegan. Cheese and baconare not vegan. Croutons, tomatoes, olives, and onions are vegan. If the topping is not vegan, set the isVegan property of the salad to false. If the topping is vegan, set the isVegan property of the salad to true. 
+* Add the list of toppings to the salad object. 
+* Display a message to the customer that says, “You ordered a [proteintype] salad on[greens type]. Use string concatenation to fill in the greens type and proteintype that the customer chose. 
+* If the user chose at least one topping, display a message that says “Your salad is topped with: “. Then loop through the toppings on the salad and display them. 
+* If the user ordered a vegan salad, display a message saying, “Thank you for trying our vegan salad.” Otherwise, display a message thanking the customer for ordering a salad from Salads to Go. 
+* Open a file called SaladOrder.txt and write the information about the salad to the file, including the greens type, protein type, and toppings. 
+* Add exception handling to catch any file I/O exceptions. 
+* Refactor the Salad class so that it contains an attribute for dressing. 
+* Then refactor your main method so the customer is prompted to choose a type of dressing and set the dressing value on your Salad object. 
+*  display the dressing to the user and write it to the file with the rest of the order
+
+---
+
 
 ```java
 //Here's an implementation of the Salad class: 
