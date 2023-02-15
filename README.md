@@ -515,64 +515,7 @@ public class Salad {
 }
 
 //-------------------------------------------------
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
-public class OrderingSystem {
-    public static void main(String[] args) {
-        String greeting = "Welcome to Salads to Go!";
-        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
-        boolean isVegan = true;
-
-        // Initialize the lists of greens, proteins, and toppings
-        ArrayList<String> greens = new ArrayList<String>();
-        greens.add("kale");
-        greens.add("romaine lettuce");
-        greens.add("iceberg lettuce");
-
-        ArrayList<String> proteins = new ArrayList<String>();
-        proteins.add("tuna");
-        proteins.add("chicken");
-        proteins.add("black beans");
-
-        ArrayList<String> toppings = new ArrayList<String>();
-        toppings.add("cheese");
-        toppings.add("croutons");
-        toppings.add("tomatoes");
-        toppings.add("onions");
-        toppings.add("bacon");
-        toppings.add("olives");
-
-        // Display the greeting and slogan to the customer
-        System.out.println(greeting);
-        System.out.println(slogan);
-
-        // Display the greens types to the customer
-        System.out.println("Greens types:");
-        for (String green : greens) {
-            System.out.println("- " + green);
-        }
-
-        // Prompt the customer to choose a type of salad greens
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What type of salad greens do you want?");
-        String chosenGreens = scanner.nextLine();
-
-        // Create a new salad object with the chosen greens
-        Salad salad = new Salad(chosenGreens);
-
-        // Display the proteins to the customer
-        System.out.println("Proteins:");
-        for (String protein : proteins) {
-            System.out.println("- " + protein);
-        }
-
-        // Prompt the customer to choose a type of protein
-        System.out.println("What type of protein
-
-//-------------------------------------------------
 public class Salad {
     private String greensType;
     private String proteinType;
@@ -811,44 +754,6 @@ public class Salad {
         return result;
     }
 }
-//-------------------------------------------------
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public class OrderingSystem {
-    public static void main(String[] args) {
-        String greeting = "Welcome to Salads to Go!";
-        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
-        boolean isVegan;
-        ArrayList<String> greensTypes = new ArrayList<String>();
-        greensTypes.add("kale");
-        greensTypes.add("romaine lettuce");
-        greensTypes.add("iceberg lettuce");
-        ArrayList<String> proteinTypes = new ArrayList<String>();
-        proteinTypes.add("tuna");
-        proteinTypes.add("chicken");
-        proteinTypes.add("black beans");
-        ArrayList<String> toppingTypes = new ArrayList<String>();
-        toppingTypes.add("cheese");
-        toppingTypes.add("croutons");
-        toppingTypes.add("tomatoes");
-        toppingTypes.add("onions");
-        toppingTypes.add("bacon");
-        toppingTypes.add("olives");
-        
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(greeting);
-        System.out.println(slogan);
-        System.out.println("Here are the available greens types:");
-        for (String greensType : greensTypes) {
-            System.out.println(greensType);
-        }
-        System.out.print("What type of salad greens do you want? ");
-        String greensType = scanner.nextLine();
-        Salad salad = new Salad(greens
 
 //-------------------------------------------------
 import java.util.ArrayList;
@@ -1383,6 +1288,105 @@ public class Salad {
 
 // And here's an implementation of the OrderingSystem class:
 
+
+//-------------------------------------------------
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class OrderingSystem {
+    public static void main(String[] args) {
+        String greeting = "Welcome to Salads to Go!";
+        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
+        boolean isVegan = true;
+
+        // Initialize the lists of greens, proteins, and toppings
+        ArrayList<String> greens = new ArrayList<String>();
+        greens.add("kale");
+        greens.add("romaine lettuce");
+        greens.add("iceberg lettuce");
+
+        ArrayList<String> proteins = new ArrayList<String>();
+        proteins.add("tuna");
+        proteins.add("chicken");
+        proteins.add("black beans");
+
+        ArrayList<String> toppings = new ArrayList<String>();
+        toppings.add("cheese");
+        toppings.add("croutons");
+        toppings.add("tomatoes");
+        toppings.add("onions");
+        toppings.add("bacon");
+        toppings.add("olives");
+
+        // Display the greeting and slogan to the customer
+        System.out.println(greeting);
+        System.out.println(slogan);
+
+        // Display the greens types to the customer
+        System.out.println("Greens types:");
+        for (String green : greens) {
+            System.out.println("- " + green);
+        }
+
+        // Prompt the customer to choose a type of salad greens
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What type of salad greens do you want?");
+        String chosenGreens = scanner.nextLine();
+
+        // Create a new salad object with the chosen greens
+        Salad salad = new Salad(chosenGreens);
+
+        // Display the proteins to the customer
+        System.out.println("Proteins:");
+        for (String protein : proteins) {
+            System.out.println("- " + protein);
+        }
+
+        // Prompt the customer to choose a type of protein
+        System.out.println("What type of protein
+
+
+//-------------------------------------------------
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class OrderingSystem {
+    public static void main(String[] args) {
+        String greeting = "Welcome to Salads to Go!";
+        String slogan = "Build Your Own Salads, Your Way. Time to build a salad.";
+        boolean isVegan;
+        ArrayList<String> greensTypes = new ArrayList<String>();
+        greensTypes.add("kale");
+        greensTypes.add("romaine lettuce");
+        greensTypes.add("iceberg lettuce");
+        ArrayList<String> proteinTypes = new ArrayList<String>();
+        proteinTypes.add("tuna");
+        proteinTypes.add("chicken");
+        proteinTypes.add("black beans");
+        ArrayList<String> toppingTypes = new ArrayList<String>();
+        toppingTypes.add("cheese");
+        toppingTypes.add("croutons");
+        toppingTypes.add("tomatoes");
+        toppingTypes.add("onions");
+        toppingTypes.add("bacon");
+        toppingTypes.add("olives");
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(greeting);
+        System.out.println(slogan);
+        System.out.println("Here are the available greens types:");
+        for (String greensType : greensTypes) {
+            System.out.println(greensType);
+        }
+        System.out.print("What type of salad greens do you want? ");
+        String greensType = scanner.nextLine();
+        Salad salad = new Salad(greens
+//-------------------------------------------------
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileWriter;
