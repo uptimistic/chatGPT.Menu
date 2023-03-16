@@ -284,7 +284,51 @@ except HttpError as error:
     print(f'An error occurred: {error}')
 ```
 ---
+```python
+import io
+import os
+import shutil
 
+import requests
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+
+
+# Google Drive API credentials
+SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
+SERVICE_ACCOUNT_FILE = 'path/to/service_account.json'
+
+# Google Drive file URL
+PDF_FILE_URL = 'https://drive.google.com/file/d/FILE_ID/view'
+
+
+def download_pdf_from_drive(file_url, credentials):
+    # Extract file ID from URL
+    file_id = file_url.split('/')[-2]
+
+    # Create credentials object
+    creds = service_account.Credentials.from_service_account_file(credentials, scopes=SCOPES)
+
+    # Create Drive API client
+    service = build('drive', 'v3', credentials=creds)
+
+    # Get file metadata
+    file_metadata = service.files().get(fileId=file_id).execute()
+
+    # Get file content
+    file_content = requests.get(file_metadata['exportLinks']['application/pdf'], headers={'Authorization': f'Bearer {creds.token}'}).content
+
+    # Save file to disk
+    with io.BytesIO(file_content) as fh:
+        with open(file_metadata['name'], 'wb') as f:
+            shutil.copyfileobj(fh, f)
+
+
+if __name__ == '__main__':
+    download_pdf_from_drive(PDF_FILE_URL, SERVICE_ACCOUNT_FILE)
+
+```
+---
 ```java
 //Here's an implementation of the Salad class: 
 
