@@ -205,6 +205,85 @@ public class OrderingSystem {
 
 ```
 ---
+To download a file from Google Drive using Python, you will need to use the Google Drive API. Here's a basic outline of the steps involved: 
+Create a Google Drive API project and enable the Drive API. Create credentials for the API by generating a JSON file with your client ID, client secret, and other information. Install the Google API client library for Python using pip. Write Python code to authorize the API using the credentials, create a service object, and download the file. Here's an example Python code that downloads a PDF file from a Google Drive link:
+---
+```python
+import io
+import os
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+from google.oauth2.credentials import Credentials
+import requests
+
+# Replace with your file ID
+file_id = "YOUR_FILE_ID"
+
+# Replace with the URL of the PDF file in Google Drive
+url = "YOUR_GOOGLE_DRIVE_LINK"
+
+# Replace with your credentials JSON file path
+creds_path = "YOUR_CREDENTIALS_JSON_FILE_PATH"
+
+# Replace with the file name you want to save the PDF as
+filename = "YOUR_FILE_NAME.pdf"
+
+# Authenticate with the API using your credentials
+creds = Credentials.from_authorized_user_file(creds_path, ["https://www.googleapis.com/auth/drive"])
+service = build("drive", "v3", credentials=creds)
+
+# Use the file ID to get the file metadata
+file = service.files().get(fileId=file_id).execute()
+
+# Use the exportLinks property to get the download link for the PDF file
+download_url = file["exportLinks"]["application/pdf"]
+headers = {"Authorization": f"Bearer {creds.token}"}
+
+# Send a GET request to the download URL to get the file content
+response = requests.get(download_url, headers=headers)
+
+# Save the file content to disk
+with open(filename, "wb") as f:
+    f.write(response.content)
+
+print(f"Downloaded {filename}")
+
+```
+---
+The steps and code snippets to download a PDF file from Google Drive using Python and the Google Drive API.
+
+First, you'll need to obtain an API key and credentials to authenticate your application with Google Drive. You can find the detailed instructions on how to set this up in the Google Drive API documentation. Once you have obtained the necessary credentials, you can use the following Python code to download a PDF file from Google Drive:
+---
+```python
+import io
+import os
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+# Set up the credentials
+creds = Credentials.from_authorized_user_file('credentials.json', ['https://www.googleapis.com/auth/drive'])
+
+# Create a Drive API client
+drive_service = build('drive', 'v3', credentials=creds)
+
+# Specify the ID of the file you want to download
+file_id = 'your_file_id_here'
+
+# Specify the MIME type of the file
+mimetype = 'application/pdf'
+
+try:
+    # Use the Drive API client to download the file
+    file = drive_service.files().get_media(fileId=file_id).execute()
+    file_content = io.BytesIO(file)
+    with io.open('file.pdf', 'wb') as f:
+        f.write(file_content.read())
+    print('File downloaded successfully.')
+except HttpError as error:
+    print(f'An error occurred: {error}')
+```
+---
 
 ```java
 //Here's an implementation of the Salad class: 
